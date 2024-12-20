@@ -34,7 +34,7 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**")
+                        .requestMatchers("/auth/**") // ** wildcard ifade eder, tüm alt yolları kapsar
                         .permitAll()
                         .anyRequest()
                         .authenticated()
@@ -58,7 +58,6 @@ public class SecurityConfiguration {
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
         source.registerCorsConfiguration("/**",configuration);
 
         return source;
